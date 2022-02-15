@@ -10,6 +10,9 @@ private:
   Button* start;
   Button* stop;
   Button* reset;
+
+  bool& start_algorithm;
+  bool& reset_array;
   
   sf::RectangleShape* separator;
     
@@ -17,7 +20,7 @@ private:
   void nh_setcolor();
   void h_setcolor();
 public:
-  Appui();
+  Appui(bool& s_a,bool& r_a);
   void render(sf::RenderWindow& w);
   void monitor(sf::RenderWindow& w);
 

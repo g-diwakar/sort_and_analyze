@@ -10,9 +10,15 @@
 int i = 0;
 App::App()
 {
-  //sf::VideoMode screen= sf::VideoMode::getDesktopMode();
-  ui = new(Appui);
-  sortingAlgorithm=nullptr;
+  a_menu=true;
+  a_visualize=false;
+  a_analyze=false;
+  set_algorithm=false;
+  reset_array=false;
+  
+  ui = new Appui(set_algorithm,reset_array);
+  M_ui=new MainMenu(a_menu,a_visualize,a_analyze);
+ // sortingAlgorithm=std::make_unique<BubbleSort>();
   window.create(sf::VideoMode(window_width,window_height),"Butterfly Butterfly",sf::Style::Close);
   window.setFramerateLimit(60);
 }
@@ -38,10 +44,6 @@ void App::initialize()
     array.push_back(bar);
   }
   std::random_shuffle(array.begin(),array.end());
-  sortingAlgorithm = std::make_unique<BubbleSort>();
-// std::thread t(&BubbleSort::sort,b,array);
-//std::thread t(&App::startSort,this);
- // t.detach();
 }
 
 void App::mainloop()
@@ -49,7 +51,7 @@ void App::mainloop()
   while(window.isOpen())
   {
      handleEvents();
-     update(); 
+     update();
      render(); 
     } 
 }
@@ -58,42 +60,74 @@ void App::handleEvents()
   sf::Event event;
   while(window.pollEvent(event))
   {
-      if(event.type==sf::Event::Closed)
-        window.close();
+    if(event.type==sf::Event::Closed)
+      window.close();
   }
-  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) 
-			{
-    std::thread(&App::startSort,this).detach();
-			}
+
+  if(!a_menu && a_visualize)
+  {
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || set_algorithm) 
+	  {
+//      std::thread(&App::startSort,this).detach();
+ //     sortingAlgorithm=std::make_unique<InsertionSort>();
+        sortingAlgorithm=std::make_unique<SelectionSort>();
+//      std::thread(&App::startSort,this).detach();
+        set_algorithm=true;  
+		}
+    if(reset_array)
+    {
+      std::random_shuffle(array.begin(),array.end());
+      for(int i=0;i<array.size();i++)
+        {
+          array[i].setDefaultColor();
+        }
+      reset_array=false;
+    }
+  }
 }
 
 void App::update()
 {
-  ui->monitor(window);
- //std::thread t(&App::startSort,this);
+  if(!a_menu && a_visualize)
+  {    
+    ui->monitor(window);
+    if(set_algorithm)
+      {
+       sortingAlgorithm=std::make_unique<SelectionSort>();
+       sortingAlgorithm->sort(window,array,ui,array_width+x_barmargin,set_algorithm);
+      }
+  }
+  if(a_menu)
+  {
+    M_ui->monitor(window);
+  }
 }
 
 void App::render()
 {
-  //  std::sort(array.begin(), array.end());    
-  
   window.clear(sf::Color(35,47,52));
-  ui->render(window);
-//b->sort(array); 
- for(int i=0;i<array.size();i++)
+
+  if(a_menu)
   {
-    array[i].render(window,(array_width+x_barmargin)*(i+1)); 
+   M_ui->render(window); 
   }
+
+  if(!a_menu && a_visualize)
+  {  
+    ui->render(window);
+    for(int i=0;i<array.size();i++)
+    {
+      array[i].render(window,(array_width+x_barmargin)*(i)); 
+    }
+  }
+
   window.display();
   
 }
 
-void App::startSort()
-{
-  sortingAlgorithm->sort(array);
-}
 
 App::~App(){
   delete ui;
+  delete M_ui;
 
 }

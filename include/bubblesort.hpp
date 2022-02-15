@@ -8,7 +8,7 @@ class BubbleSort:public Algorithm
     BubbleSort(){};
     ~BubbleSort()=default;
 
-    void sort(std::vector<Bar>& array) override;
+    void sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, float pos_x, bool& start_algorithm) override;
     
 };
 

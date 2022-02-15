@@ -1,20 +1,21 @@
 #include"../include/bubblesort.hpp"
 #include <chrono>
 #include <thread>
-#include<iostream>
-void BubbleSort::sort(std::vector<Bar>& array)
+void BubbleSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, float pos_x,bool& start_algorithm)
 {
   unsigned i,j;
   for(i=0;i<array.size();i++)
   {
+      if(!start_algorithm)
+        break;
+
       for(j=0;j<array.size()-i-1;j++)
       {
         array[j].setColor(sf::Color::Red);
         array[j+1].setColor(sf::Color::Red);
  
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
+        render(w,array,ui,pos_x);
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
         array[j].setDefaultColor();
         array[j+1].setDefaultColor();
 
@@ -23,8 +24,8 @@ void BubbleSort::sort(std::vector<Bar>& array)
         if(isGreater(array[j],array[j+1]))
           swap(array[j],array[j+1]);
 
-        std::cout<<j<<std::endl;     
       }
       array[j].setColor(sf::Color::Green);
     }
+  start_algorithm=false;
 }

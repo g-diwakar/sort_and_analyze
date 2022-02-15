@@ -10,6 +10,10 @@
 #include"bar.hpp"
 #include "algorithm.hpp"
 #include"bubblesort.hpp"
+#include"insertionsort.hpp"
+#include"selectionsort.hpp"
+#include"menuui.hpp"
+
 
 class App{
 private:
@@ -19,13 +23,22 @@ private:
   unsigned x_barmargin=2;
   int t_data=100;
 
+
+  bool a_menu;
+  bool a_visualize;
+  bool a_analyze;
+
   sf::RenderWindow window;
 
   std::vector<Bar> array;
   std::unique_ptr<Algorithm> sortingAlgorithm;
   float array_width,array_height;
+
+  bool reset_array;
+  bool set_algorithm;
  
-  Appui* ui; 
+  Appui* ui;
+  MainMenu* M_ui;
   void initialize();
   void handleEvents();
   void update();

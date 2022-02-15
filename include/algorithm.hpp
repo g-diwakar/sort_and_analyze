@@ -2,6 +2,8 @@
 #define ALGORITHM_HPP
 
 #include"bar.hpp"
+#include"appui.hpp"
+#include <SFML/Graphics/RenderWindow.hpp>
 #include<chrono>
 #include<thread>
 class Algorithm
@@ -14,7 +16,9 @@ public:
   Algorithm(){};
   ~Algorithm()=default;
 
-  virtual void sort(std::vector<Bar>& array)=0;
+  virtual void sort(sf::RenderWindow&w,std::vector<Bar>& array,Appui* ui, float posx,bool& start_algorithm)=0;
+  void render(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, float pos_x);
+  void delay();
 
   };
 

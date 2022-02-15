@@ -2,7 +2,7 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
-Appui::Appui()
+Appui::Appui(bool& s_a,bool& r_a):start_algorithm(s_a),reset_array(r_a)
 {
   start = new(Button);
   reset = new(Button);
@@ -30,7 +30,7 @@ Appui::Appui()
   nh_setcolor();
   separator->setFillColor(sf::Color(52,73,85));
 
-  start->setString("START");
+start->setString("START");
   reset->setString("RESET");
   stop->setString("STOP");
 
@@ -70,6 +70,22 @@ void Appui::monitor(sf::RenderWindow &w)
   h_setcolor();
   if(!h_coloredset)
     nh_setcolor();
+  
+  if(start->clicked)
+  {
+    start_algorithm=true;
+  }
+  if(stop->clicked)
+  {
+    start_algorithm=false;
+  }
+
+  if(reset->clicked)
+  {
+    start_algorithm=false;
+    reset_array=true;
+  }
+
 }
 
 void Appui::nh_setcolor()
