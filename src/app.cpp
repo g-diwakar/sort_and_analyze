@@ -99,6 +99,8 @@ void App::update()
    //    sortingAlgorithm=std::make_unique<SelectionSort>();
     // sortingAlgorithm=std::make_unique<HeapSort>();
      sortingAlgorithm=std::make_unique<QuickSort>();
+    //sortingAlgorithm=std::make_unique<BubbleSort>();
+
        sortingAlgorithm->sort(window,array,ui,array_width+x_barmargin,set_algorithm);
       }
   }
