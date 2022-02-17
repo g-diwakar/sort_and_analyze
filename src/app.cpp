@@ -18,6 +18,7 @@ App::App()
   
   ui = new Appui(set_algorithm,reset_array);
   M_ui=new MainMenu(a_menu,a_visualize,a_analyze);
+  A_ui=new(Analyze_ui);
  // sortingAlgorithm=std::make_unique<BubbleSort>();
   window.create(sf::VideoMode(window_width,window_height),"Butterfly Butterfly",sf::Style::Close);
   window.setFramerateLimit(60);
@@ -70,7 +71,8 @@ void App::handleEvents()
 	  {
 //      std::thread(&App::startSort,this).detach();
  //     sortingAlgorithm=std::make_unique<InsertionSort>();
-        sortingAlgorithm=std::make_unique<SelectionSort>();
+       // sortingAlgorithm=std::make_unique<SelectionSort>();
+       // sortingAlgorithm=std::make_unique<HeapSort>();
 //      std::thread(&App::startSort,this).detach();
         set_algorithm=true;  
 		}
@@ -93,7 +95,10 @@ void App::update()
     ui->monitor(window);
     if(set_algorithm)
       {
-       sortingAlgorithm=std::make_unique<SelectionSort>();
+       //  sortingAlgorithm=std::make_unique<InsertionSort>();
+   //    sortingAlgorithm=std::make_unique<SelectionSort>();
+    // sortingAlgorithm=std::make_unique<HeapSort>();
+     sortingAlgorithm=std::make_unique<QuickSort>();
        sortingAlgorithm->sort(window,array,ui,array_width+x_barmargin,set_algorithm);
       }
   }
@@ -115,12 +120,16 @@ void App::render()
   if(!a_menu && a_visualize)
   {  
     ui->render(window);
-    for(int i=0;i<array.size();i++)
+    for(int i=1;i<array.size();i++)
     {
       array[i].render(window,(array_width+x_barmargin)*(i)); 
     }
   }
 
+  if(!a_menu && a_analyze)
+  {
+    A_ui->render(window); 
+  }
   window.display();
   
 }
@@ -129,5 +138,6 @@ void App::render()
 App::~App(){
   delete ui;
   delete M_ui;
+  delete A_ui;
 
 }

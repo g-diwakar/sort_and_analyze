@@ -12,7 +12,10 @@
 #include"bubblesort.hpp"
 #include"insertionsort.hpp"
 #include"selectionsort.hpp"
+#include"heapsort.hpp"
+#include"quicksort.hpp"
 #include"menuui.hpp"
+#include"analyzeui.hpp"
 
 
 class App{
@@ -20,7 +23,7 @@ private:
   
   unsigned window_width=1020;
   unsigned window_height=780;
-  unsigned x_barmargin=2;
+  unsigned x_barmargin=0;
   int t_data=100;
 
 
@@ -39,6 +42,7 @@ private:
  
   Appui* ui;
   MainMenu* M_ui;
+  Analyze_ui* A_ui;
   void initialize();
   void handleEvents();
   void update();

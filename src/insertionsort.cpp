@@ -18,6 +18,10 @@ void InsertionSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, 
     render(w,array,ui,pos_x);
     int j;
     for (j = i - 1; j >= 0; --j) {
+      if(!start_algorithm)
+        {
+        break;
+      }
       if (array[j].getValue() <= Km) {
         break;
       } else {

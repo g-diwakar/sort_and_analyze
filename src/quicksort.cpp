@@ -1,7 +1,7 @@
-#include"../include/bubblesort.hpp"
+#include"../include/quicksort.hpp"
 #include <chrono>
 #include <thread>
-void BubbleSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, float pos_x,bool& start_algorithm)
+void QuickSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, float pos_x,bool& start_algorithm)
 {
   unsigned i,j;
   for(i=0;i<array.size();i++)

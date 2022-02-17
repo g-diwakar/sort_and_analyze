@@ -13,6 +13,10 @@ void SelectionSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, 
       int smallestId=i;
      for(j=i+1;j<array.size();++j)
       {
+        if(!start_algorithm)
+        {
+          break;
+         }
           array[i].setColor(sf::Color::Red);
           array[j].setColor(sf::Color::Yellow);
           render(w, array,  ui,  pos_x);
