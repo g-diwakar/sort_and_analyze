@@ -75,6 +75,7 @@ void App::handleEvents()
        // sortingAlgorithm=std::make_unique<HeapSort>();
 //      std::thread(&App::startSort,this).detach();
         set_algorithm=true;  
+
 		}
     if(reset_array)
     {
@@ -95,12 +96,12 @@ void App::update()
     ui->monitor(window);
     if(set_algorithm)
       {
-       //  sortingAlgorithm=std::make_unique<InsertionSort>();
+     //    sortingAlgorithm=std::make_unique<InsertionSort>();
    //    sortingAlgorithm=std::make_unique<SelectionSort>();
-    // sortingAlgorithm=std::make_unique<HeapSort>();
-     sortingAlgorithm=std::make_unique<QuickSort>();
+     sortingAlgorithm=std::make_unique<HeapSort>();
+  //   sortingAlgorithm=std::make_unique<QuickSort>();
     //sortingAlgorithm=std::make_unique<BubbleSort>();
-
+    //sortingAlgorithm=std::make_unique<ShellSort>();
        sortingAlgorithm->sort(window,array,ui,array_width+x_barmargin,set_algorithm);
       }
   }

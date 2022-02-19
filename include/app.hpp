@@ -16,7 +16,7 @@
 #include"quicksort.hpp"
 #include"menuui.hpp"
 #include"analyzeui.hpp"
-
+#include"shellsort.hpp" 
 
 class App{
 private:

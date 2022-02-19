@@ -11,7 +11,7 @@ private:
   sf::RectangleShape rectangle;
   sf::Color defaultcolor;
   sf::Color color;
-  int  value;
+  int value;
 public:
   Bar(){};
   Bar(int n);

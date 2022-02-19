@@ -14,6 +14,8 @@ int l = array.size() >> 1;
     int Km;
     while(1)
     {
+    if(!start_algorithm)
+        break;
     for (int j = l-1; j <= r; ++j)
     {
         array[j].setColor(sf::Color(255, 192, 203));
@@ -26,7 +28,7 @@ int l = array.size() >> 1;
             --l;
             array[l].setColor(sf::Color::Red);
             render(w,array,ui,pos_x);
-std::this_thread::sleep_for(std::chrono::milliseconds(50));
+            std::this_thread::sleep_for(std::chrono::milliseconds(50));
             Rm = array[l];
             Km = array[l].getValue();
         }
@@ -55,6 +57,10 @@ std::this_thread::sleep_for(std::chrono::milliseconds(50));
 
         while(1)
         {
+          if(!start_algorithm)
+          { 
+            break;
+          }
             i = j; 
 
             if (j == 0)
@@ -90,10 +96,6 @@ std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }
         array[i] = Rm;
         
-    }
-  for(int i=0;i<array.size();i++)
-    {
-      std::cout<<array[i].getValue()<<" ";
     }
   start_algorithm=false;
 

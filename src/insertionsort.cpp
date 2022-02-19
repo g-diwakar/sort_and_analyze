@@ -14,24 +14,31 @@ void InsertionSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, 
     int Km = array[i].getValue();
     Bar temp = array[i];
 
-    array[i].setColor(sf::Color::Green);
+    array[i].setColor(sf::Color::Red);
     render(w,array,ui,pos_x);
+    std::this_thread::sleep_for(std::chrono::milliseconds(20));
     int j;
     for (j = i - 1; j >= 0; --j) {
       if(!start_algorithm)
-        {
-        break;
+      {
+        break; 
       }
       if (array[j].getValue() <= Km) {
         break;
-      } else {
-        array[j].setColor(sf::Color::Green);
-        array[j + 1] = array[j];
+      } 
+      else {
+        array[j].setColor(sf::Color::Black);
         render(w,array,ui,pos_x);
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));  
+        array[j+1]=array[j];
+        render(w,array,ui,pos_x);
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        i==(j+1)? array[i].setColor(sf::Color::Red) : array[j+1].setColor(sf::Color::Green);
       }
 
     }
     array[j + 1] = temp;
+    array[i].setColor(sf::Color::Green);
     array[j+1].setColor(sf::Color::Green);
     render(w,array,ui,pos_x);
   }
