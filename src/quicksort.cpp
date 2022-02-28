@@ -75,7 +75,7 @@ class Stack
             do {++i;            
             array[i].setColor(sf::Color::Red);
             render(w,array,ui,pos_x);
-           std::this_thread::sleep_for(std::chrono::milliseconds(50));
+           std::this_thread::sleep_for(std::chrono::milliseconds(10));
             array[i].setDefaultColor();
             render(w,array,ui,pos_x);
           } while(array[i].getValue() < Km);
@@ -83,7 +83,7 @@ class Stack
             do {--j;
                       array[j].setColor(sf::Color::Red);
             render(w,array,ui,pos_x);
-           std::this_thread::sleep_for(std::chrono::milliseconds(50));
+           std::this_thread::sleep_for(std::chrono::milliseconds(10));
             array[j].setDefaultColor();
             render(w,array,ui,pos_x);
           } while(array[j].getValue() > Km);
@@ -112,7 +112,7 @@ class Stack
            render(w,array,ui,pos_x);
                array[j].setColor(sf::Color::Green);
                 render(w,array,ui,pos_x);
-                std::this_thread::sleep_for(std::chrono::milliseconds(300));
+                std::this_thread::sleep_for(std::chrono::milliseconds(100));
                array[j].setDefaultColor();
                 render(w,array,ui,pos_x);
                 Bar temp;

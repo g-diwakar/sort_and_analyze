@@ -16,10 +16,17 @@ App::App()
   set_algorithm=false;
   reset_array=false;
   
-  ui = new Appui(set_algorithm,reset_array);
+  for(int i=0;i<6;i++)
+  {
+      current_algorithm.push_back(false);
+  }
+  current_algorithm[0]=true;
+
+  ui = new Appui(set_algorithm,reset_array,current_algorithm);
   M_ui=new MainMenu(a_menu,a_visualize,a_analyze);
   A_ui=new(Analyze_ui);
- // sortingAlgorithm=std::make_unique<BubbleSort>();
+  
+
   window.create(sf::VideoMode(window_width,window_height),"Butterfly Butterfly",sf::Style::Close);
   window.setFramerateLimit(60);
 }
@@ -34,7 +41,7 @@ void App::initialize()
 {
   array.clear();
 
-  array_width=(window.getSize().x-t_data*x_barmargin)/float(t_data);
+  array_width=((window.getSize().x-150)-t_data*x_barmargin)/float(t_data);
 
   for(int i=1;i<=t_data;i++)
   {
@@ -69,14 +76,13 @@ void App::handleEvents()
   {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || set_algorithm) 
 	  {
-//      std::thread(&App::startSort,this).detach();
- //     sortingAlgorithm=std::make_unique<InsertionSort>();
-       // sortingAlgorithm=std::make_unique<SelectionSort>();
-       // sortingAlgorithm=std::make_unique<HeapSort>();
-//      std::thread(&App::startSort,this).detach();
         set_algorithm=true;  
-
-		}
+  	}
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+      a_visualize=false;
+      a_menu=true;
+    }
     if(reset_array)
     {
       std::random_shuffle(array.begin(),array.end());
@@ -94,14 +100,36 @@ void App::update()
   if(!a_menu && a_visualize)
   {    
     ui->monitor(window);
-    if(set_algorithm)
+      if(current_algorithm[0])
       {
-     //    sortingAlgorithm=std::make_unique<InsertionSort>();
-   //    sortingAlgorithm=std::make_unique<SelectionSort>();
-     sortingAlgorithm=std::make_unique<HeapSort>();
-  //   sortingAlgorithm=std::make_unique<QuickSort>();
-    //sortingAlgorithm=std::make_unique<BubbleSort>();
-    //sortingAlgorithm=std::make_unique<ShellSort>();
+        sortingAlgorithm=std::make_unique<BubbleSort>();
+      }
+      else if(current_algorithm[1])
+      {
+        sortingAlgorithm=std::make_unique<HeapSort>();
+      }
+      else if(current_algorithm[2])
+      {
+        sortingAlgorithm=std::make_unique<InsertionSort>();
+      }
+      else if(current_algorithm[3])
+      {
+        sortingAlgorithm=std::make_unique<QuickSort>();
+      }
+      else if(current_algorithm[4])
+      {
+        sortingAlgorithm=std::make_unique<SelectionSort>();
+      }
+      else if(current_algorithm[5])
+      {
+        sortingAlgorithm=std::make_unique<ShellSort>();
+      }
+      else 
+      {
+      sortingAlgorithm=std::make_unique<BubbleSort>();
+      }
+      if (set_algorithm)
+      {
        sortingAlgorithm->sort(window,array,ui,array_width+x_barmargin,set_algorithm);
       }
   }

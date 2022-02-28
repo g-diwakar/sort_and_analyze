@@ -20,7 +20,7 @@ void SelectionSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, 
           array[i].setColor(sf::Color::Red);
           array[j].setColor(sf::Color::Yellow);
           render(w, array,  ui,  pos_x);
-          std::this_thread::sleep_for(std::chrono::milliseconds(50));
+          std::this_thread::sleep_for(std::chrono::milliseconds(1));
           array[j].setDefaultColor();
          // render(w, array,  ui,  pos_x);
 

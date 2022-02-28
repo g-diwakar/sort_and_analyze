@@ -17,7 +17,7 @@ void BubbleSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, flo
         array[j+1].setColor(sf::Color::Red);
  
         render(w,array,ui,pos_x);
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
         array[j].setDefaultColor();
         array[j+1].setDefaultColor();
 

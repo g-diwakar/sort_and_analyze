@@ -35,6 +35,7 @@ private:
 
   std::vector<Bar> array;
   std::unique_ptr<Algorithm> sortingAlgorithm;
+  std::vector<bool> current_algorithm;
   float array_width,array_height;
 
   bool reset_array;

@@ -25,7 +25,7 @@ void ShellSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, floa
             break;
           array[i].setColor(sf::Color::Red);
           render(w,array,ui,pos_x);
-          std::this_thread::sleep_for(std::chrono::milliseconds(100));
+          std::this_thread::sleep_for(std::chrono::milliseconds(30));
           int Km = array[i].getValue();
           Bar Rm = array[i];
           int j;
@@ -40,14 +40,14 @@ void ShellSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, floa
             }
             else
             {
-              array[j].setColor(sf::Color::Black);
+              array[j].setColor(sf::Color(111,111,111));
               render(w,array,ui,pos_x);
-              std::this_thread::sleep_for(std::chrono::milliseconds(50));  
+              std::this_thread::sleep_for(std::chrono::milliseconds(30));  
 
               array[j+h] = array[j];
               render(w,array,ui,pos_x);
-              std::this_thread::sleep_for(std::chrono::milliseconds(50));
-              i==j+h? array[i].setColor(sf::Color::Red) : array[j+h].setDefaultColor();
+              std::this_thread::sleep_for(std::chrono::milliseconds(30));
+              i==j+h? array[i].setColor(sf::Color(111,111,111)) : array[j+h].setDefaultColor();
             }
           }
           array[j+h] = Rm;
