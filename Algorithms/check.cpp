@@ -13,7 +13,7 @@ int main()
 {
   Cooridnates m_coordinates;
   std::ifstream file;
-  file.open("bubble.txt",std::ios::in);
+  file.open("insertion.txt",std::ios::in);
   while(!file.eof())
   {
       file.read(reinterpret_cast<char*>(&m_coordinates),sizeof(m_coordinates));

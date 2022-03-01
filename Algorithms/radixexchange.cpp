@@ -43,7 +43,7 @@ int main()
 {
   Coordi m_coordinates;
   fstream file("radix_exchange.txt", ios::out);
-	for (int N = 100000; N <= 1000000; N=N+100000)	//10 hajar dekhi 500 hajar samma hai lmao
+	for (int N = 10000; N <= 1000000; N=N+10000)	//10 hajar dekhi 500 hajar samma hai lmao
 	{
 		    const int m = 10;	//2^m is the base of exchange
 		Records* Recs;

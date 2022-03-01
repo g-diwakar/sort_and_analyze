@@ -4,6 +4,7 @@
 #include<iostream>
 void QuickSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, float pos_x,bool& start_algorithm)
 {
+  std::cout << array.size() << std::endl;
 array.push_back(50000);
 struct Coordinates
 {
@@ -151,6 +152,8 @@ class Stack
           array[i].setColor(sf::Color::Green);
           render(w,array,ui,pos_x);
           std::this_thread::sleep_for(std::chrono::milliseconds(20));
-    } 
-  start_algorithm=false;
+    }
+    array.pop_back();
+  std::cout << array.size() << std::endl;
+   start_algorithm=false;
 }

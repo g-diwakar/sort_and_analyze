@@ -24,7 +24,7 @@ int main()
     //Records Recs[1+N] = {0, 503, 87, 512, 061, 908, 170, 897, 275, 653, 426, 154, 509, 612, 677, 765, 703};
   Coordinates m_coordinates;
   fstream file("insertion.txt",ios::out);
-	for (int N = 10000; N <= 100000; N=N+10000)
+	for (int N = 500; N <= 50000; N=N+500)
 	{
 		Records* Recs;
 		Recs = new Records[1+N];

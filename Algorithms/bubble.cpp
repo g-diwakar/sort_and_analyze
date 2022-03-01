@@ -21,7 +21,7 @@ int main()
 {
   fstream file("bubble.txt",ios::out);
   Coordinates m_coordinates;
-	for (int N = 10000; N <= 100000; N=N+10000)	//10 hajar dekhi 500 hajar samma hai lmao
+	for (int N = 200; N <= 21000; N=N+200)	//10 hajar dekhi 500 hajar samma hai lmao
 	{
 		Records* Recs;
 		Recs = new Records[1+N];

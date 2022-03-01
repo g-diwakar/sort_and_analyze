@@ -23,7 +23,7 @@ int main()
  
   Coordinates m_coordinates;
   fstream file("shell.txt",ios::out);
-	for (int N = 100000; N <= 1000000; N=N+100000)	//10 hajar dekhi 500 hajar samma hai lmao
+	for (int N = 10000; N <= 1000000; N=N+10000)	//10 hajar dekhi 500 hajar samma hai lmao
 	{
 		Records* Recs;
 		Recs = new Records[1+N];
@@ -51,7 +51,8 @@ void shell(int N, Records *Recs )
   int H[500] = {0, 1};
     for (int i = 1; i <= 400; ++i)
     {
-        H[i+1] = pow(4,i)+3*pow(2,(i-1))+1;
+        //H[i+1] = pow(4,i)+3*pow(2,(i-1))+1;
+        H[i+1] = pow(2,i+1)-1;
     }
 
     int t = 0;

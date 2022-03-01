@@ -6,29 +6,33 @@
 
 void HeapSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, float pos_x,bool& start_algorithm)
 {
-  
-int l = array.size() >> 1;
-
-    int r = array.size();
+  std::cout << array.size() << std::endl;
+  for (int i = 0; i < array.size(); ++i)
+    {
+      std::cout << array[i].getValue() << " ";
+    }
+  std::cout << std::endl;
+    int l = (array.size() >> 1);
+    int r = array.size()-1;
     Bar Rm;
     int Km;
     while(1)
     {
     if(!start_algorithm)
         break;
-    for (int j = l-1; j <= r; ++j)
+    for (int j = l; j <= r; ++j)
     {
         array[j].setColor(sf::Color(255, 192, 203));
     }
       render(w,array,ui,pos_x);
-      std::this_thread::sleep_for(std::chrono::milliseconds(20));
+      std::this_thread::sleep_for(std::chrono::milliseconds(30));
 
         if (l > 0)
         {
             --l;
             array[l].setColor(sf::Color::Red);
             render(w,array,ui,pos_x);
-            std::this_thread::sleep_for(std::chrono::milliseconds(20));
+            std::this_thread::sleep_for(std::chrono::milliseconds(30));
             Rm = array[l];
             Km = array[l].getValue();
         }
@@ -42,7 +46,7 @@ int l = array.size() >> 1;
              array[0] = Rm;
              array[0].setColor(sf::Color::Red);
              render(w,array,ui,pos_x);
-             std::this_thread::sleep_for(std::chrono::milliseconds(20));
+             std::this_thread::sleep_for(std::chrono::milliseconds(30));
              --r;
 
              if (r == 0)
@@ -84,7 +88,7 @@ int l = array.size() >> 1;
             array[i].setColor(sf::Color::Red);
             array[j].setColor(sf::Color::Yellow);
             render(w,array,ui,pos_x);
-            std::this_thread::sleep_for(std::chrono::milliseconds(20));
+            std::this_thread::sleep_for(std::chrono::milliseconds(30));
 
 
             if (Km >= array[j].getValue()) 
@@ -96,6 +100,12 @@ int l = array.size() >> 1;
         array[i] = Rm;
         
     }
+  for (int i = 0; i < array.size(); ++i)
+    {
+      std::cout << array[i].getValue() << " ";
+
+    }
+  std::cout << std::endl << array.size() << std::endl;
   start_algorithm=false;
 
 }

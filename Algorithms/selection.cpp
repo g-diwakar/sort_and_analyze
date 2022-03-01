@@ -21,7 +21,7 @@ int main()
 {
   Coordinates m_coordinates;
   fstream file("selection.txt",ios::out);
-	for (int N = 10000; N <= 100000; N=N+10000)	//10 hajar dekhi 500 hajar samma hai lmao
+	for (int N = 300; N <= 32000; N=N+300)	//10 hajar dekhi 500 hajar samma
 	{
 		Records* Recs;
 		Recs = new Records[1+N];

@@ -28,7 +28,7 @@ int main()
     const int m = 4;    //2^m will be the base so here 16 is base 
     const int p = 3;    //3 digits of 16 base, no of digits in that base
 	
-	for (int N = 100000; N <= 1000000; N=N+100000)	//10 hajar dekhi 500 hajar samma hai lmao
+	for (int N = 10000; N <= 1000000; N=N+10000)	//10 hajar dekhi 500 hajar samma hai lmao
 	{
 		Records* T[1<<m];  //array of top pointers for the queue;
 		Records* B[1<<m];

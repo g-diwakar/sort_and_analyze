@@ -1,5 +1,6 @@
 #include"../include/app.hpp"
 
+#include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/VideoMode.hpp>
 #include <SFML/Window/WindowStyle.hpp>
 #include <algorithm>
@@ -71,7 +72,14 @@ void App::handleEvents()
     if(event.type==sf::Event::Closed)
       window.close();
   }
-
+  if(!a_menu && a_analyze)
+  {
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+      a_analyze=false;
+      a_menu=true;
+    }
+  }
   if(!a_menu && a_visualize)
   {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || set_algorithm) 
@@ -85,11 +93,7 @@ void App::handleEvents()
     }
     if(reset_array)
     {
-      std::random_shuffle(array.begin(),array.end());
-      for(int i=0;i<array.size();i++)
-        {
-          array[i].setDefaultColor();
-        }
+      initialize();
       reset_array=false;
     }
   }
@@ -97,6 +101,10 @@ void App::handleEvents()
 
 void App::update()
 {
+  if(!a_menu && a_analyze)
+  {
+    A_ui->monitor(window);
+  }
   if(!a_menu && a_visualize)
   {    
     ui->monitor(window);
@@ -151,7 +159,7 @@ void App::render()
   if(!a_menu && a_visualize)
   {  
     ui->render(window);
-    for(int i=1;i<array.size();i++)
+    for(int i=0;i<array.size();i++)
     {
       array[i].render(window,(array_width+x_barmargin)*(i)); 
     }
