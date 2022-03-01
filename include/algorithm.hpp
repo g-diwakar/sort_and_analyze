@@ -18,7 +18,6 @@ public:
 
   virtual void sort(sf::RenderWindow&w,std::vector<Bar>& array,Appui* ui, float posx,bool& start_algorithm)=0;
   void render(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, float pos_x);
-  void delay();
 
   };
 

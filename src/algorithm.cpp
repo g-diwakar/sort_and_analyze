@@ -18,13 +18,6 @@ bool Algorithm::isLesser(Bar& a, Bar& b)
   return (a<b);
 }
 
-void Algorithm::delay()
-{
-  for(unsigned long int i=0;i<1000000;i++)
-  {
-      continue;
-    }
-}
 
 void Algorithm::render(sf::RenderWindow &w, std::vector<Bar> &array,Appui *ui, float pos_x)
 {

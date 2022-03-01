@@ -39,7 +39,12 @@ private:
   
   sf::RectangleShape graph;
   sf::RectangleShape addPixels(float x_pos,float y_pos,sf::Color color);
-  std::vector<sf::Image> points;
+
+  sf::Text x_label;
+  sf::Text y_label;
+  sf::Text max_x;
+  sf::Text max_y;
+  sf::Font font;
 
   void readFiles();
   void draw_point(sf::RenderWindow &w, int n,std::vector<Coordinates>& data );

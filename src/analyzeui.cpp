@@ -119,7 +119,31 @@ Analyze_ui::Analyze_ui()
   b_shell->setBorderColor(sf::Color(143,183,143));
 
 
+  font.loadFromFile("../fonts/lato.ttf");
+  x_label.setFont(font);
+  y_label.setFont(font);
+  max_x.setFont(font);
+  max_y.setFont(font);
 
+  x_label.setPosition(1020.00/2-100,780-130);
+  x_label.setString("N ---->");
+  x_label.setStyle(sf::Text::Bold);
+  x_label.setFillColor(sf::Color(173, 141, 52));
+
+  y_label.setPosition(100,780.00/2+100);
+  y_label.setString("T ---->");
+  y_label.setStyle(sf::Text::Bold);
+  y_label.setFillColor(sf::Color(173,141,52));
+  y_label.rotate(-90);
+
+  max_x.setPosition(1020-300,30);
+  max_x.setCharacterSize(25);
+  max_x.setString("N[MAX]: 1000000");
+  max_x.setFillColor(sf::Color(173,141,52));
+  max_y.setPosition(1020-300,60);
+  max_y.setCharacterSize(25);
+  max_y.setString("T[MAX]: 1000ms");
+  max_y.setFillColor(sf::Color(173,141,52));
 } 
 
 void Analyze_ui::render(sf::RenderWindow &w)
@@ -134,13 +158,17 @@ void Analyze_ui::render(sf::RenderWindow &w)
   w.draw(*b_radix);
   w.draw(*b_heap);
   w.draw(*b_shell);
+  w.draw(x_label);
+  w.draw(y_label);
+  w.draw(max_x);
+  w.draw(max_y);
   
   if(active_algorithm[0])
   {
    draw_point(w,0,b_sort); 
   }
 
-   if(active_algorithm[1])
+  if(active_algorithm[1])
   {
    draw_point(w, 1, d_sort); 
   }
@@ -180,8 +208,6 @@ void Analyze_ui::draw_point(sf::RenderWindow&w, int n, std::vector<Coordinates>&
    float y_pos;
    for(int i=0;i<data.size();i++)
     {
-     // x_pos=get_relative_x((float(data[i].x)/data[data.size()-1].x)*(1020-300));
-      //y_pos=get_relative_y((float(data[i].y)/data[data.size()-1].y)*(780-300));
       x_pos=get_relative_x((float(data[i].x)/1000000)*(1020-300));
       y_pos=get_relative_y((float(data[i].y)/1000)*(780-300));
       if(y_pos<150)

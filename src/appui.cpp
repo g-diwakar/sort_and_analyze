@@ -153,7 +153,6 @@ void Appui::monitor(sf::RenderWindow &w)
 
   if(b_sort->clicked)
   {
-   std::cout<<"bubble clicked"<<std::endl;
    selectAlgorithm(0);
    reset_color(selected_algorithm);
    b_sort->setTextColor(sf::Color(237,87,72));
@@ -163,7 +162,6 @@ void Appui::monitor(sf::RenderWindow &w)
 
   if(h_sort->clicked)
   {
-    std::cout<<"heap clicked"<<std::endl;
     selectAlgorithm(1);
     reset_color(selected_algorithm);
     h_sort->setTextColor(sf::Color(237,87,72));
@@ -172,7 +170,6 @@ void Appui::monitor(sf::RenderWindow &w)
   }
   if(i_sort->clicked)
   {
-    std::cout<<"insertion clicked"<<std::endl;
     selectAlgorithm(2);
     reset_color(selected_algorithm);
     i_sort->setTextColor(sf::Color(237,87,72));
@@ -181,7 +178,6 @@ void Appui::monitor(sf::RenderWindow &w)
   }
   if(q_sort->clicked)
   {
-    std::cout<<"quick clicked"<<std::endl;
     selectAlgorithm(3);
     reset_color(selected_algorithm);
     q_sort->setTextColor(sf::Color(237,87,72));
@@ -190,7 +186,6 @@ void Appui::monitor(sf::RenderWindow &w)
   }
   if(se_sort->clicked)
   {
-    std::cout<<"selection clicked"<<std::endl;
     selectAlgorithm(4);
     reset_color(selected_algorithm);
     se_sort->setTextColor(sf::Color(237,87,72));
@@ -199,7 +194,6 @@ void Appui::monitor(sf::RenderWindow &w)
   }
   if(sh_sort->clicked)
   {
-    std::cout<<"shell clicked"<<std::endl;
     selectAlgorithm(5);
     reset_color(selected_algorithm);
     sh_sort->setTextColor(sf::Color(237,87,72));
@@ -251,7 +245,6 @@ void Appui::selectAlgorithm(int n)
     current_algorithm[i]=false;
   }
   current_algorithm[n]=true;
-  std::cout<<n<<" "<<current_algorithm[n]<<std::endl;
 }
 void Appui::nh_setcolor()
 {

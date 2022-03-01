@@ -6,12 +6,6 @@
 
 void HeapSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, float pos_x,bool& start_algorithm)
 {
-  std::cout << array.size() << std::endl;
-  for (int i = 0; i < array.size(); ++i)
-    {
-      std::cout << array[i].getValue() << " ";
-    }
-  std::cout << std::endl;
     int l = (array.size() >> 1);
     int r = array.size()-1;
     Bar Rm;
@@ -100,12 +94,7 @@ void HeapSort::sort(sf::RenderWindow& w, std::vector<Bar>&array,Appui* ui, float
         array[i] = Rm;
         
     }
-  for (int i = 0; i < array.size(); ++i)
-    {
-      std::cout << array[i].getValue() << " ";
 
-    }
-  std::cout << std::endl << array.size() << std::endl;
   start_algorithm=false;
 
 }

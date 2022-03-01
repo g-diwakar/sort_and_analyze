@@ -11,7 +11,7 @@ private:
     std::string t_string;
     sf::Vector2f t_position;
     sf::Color t_text_color;
-  sf::Color t_background_color;
+    sf::Color t_background_color;
     sf::Color t_border_color;
     unsigned int t_character_size;
     sf::Vector2f t_size;

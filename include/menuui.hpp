@@ -2,13 +2,20 @@
 #define MENUUI_HPP
 
 #include"button.hpp"
+#include <SFML/Graphics/Texture.hpp>
 
 class MainMenu
 {
 private:
     Button *visualization;
     Button *analyzation;
+    sf::Texture t_bg;
+    sf::Sprite s_bg; 
 
+    sf::Text u_text;
+    sf::Text d_text;
+    sf::Font font;
+    
     bool& a_menu;
     bool& a_visualize;
     bool& a_analyze;
